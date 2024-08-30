@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnb4bkhhe00xf"]
+[gd_scene load_steps=5 format=3 uid="uid://cnb4bkhhe00xf"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_cbuvb"]
 [ext_resource type="Texture2D" uid="uid://dm36t6mmi7b0q" path="res://icon.svg" id="1_cyu0g"]
@@ -6,7 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjc55"]
 radius = 67.42
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mvua"]
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_cbuvb")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
@@ -14,10 +17,8 @@ position = Vector2(447, 221)
 texture = ExtResource("1_cyu0g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(440, 223)
+position = Vector2(446, 222)
 shape = SubResource("CircleShape2D_gjc55")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(574, 322)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6mvua")

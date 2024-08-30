@@ -1,49 +1,61 @@
 extends CharacterBody2D
 
-@export var SPEED : int  = 300 
-@export var GRAVITY : int = 98 
 @onready var animations = $AnimationPlayer
+@export var health := 100
+@export var sanity := 100
+var time := 0.5
+var SPEED := 120
+var current_direction := "none"
+var player_state
 
 
+
+#Player movement.
+func player_movement():
+	var direction = Input.get_vector("left","right","move_up","down")
+	
+	if direction.x == 0 and direction.y == 0:
+		player_state = "idle"
+	elif direction.x != 0 or direction.y != 0:
+		player_state = "walking"
+		
+	velocity = direction * SPEED
+	move_and_slide()
+	
+	play_animation(direction)
+	
+#  Play animation for movement.
+func play_animation(direction):
+	print(direction)
+	if player_state == "idle":
+		$AnimatedSprite2D.play("idle")
+		
+	if player_state == "walking":
+		if direction.y == -1:
+			$AnimatedSprite2D.play("north-walk")
+		if direction.x == 1:
+			$AnimatedSprite2D.play("east-walk")
+		if direction.y == 1:
+			$AnimatedSprite2D.play("south-walk")
+		if direction.x == -1:
+			$AnimatedSprite2D.play("west-walk")
+			
+		if direction.x > 0.5 and direction.y < -0.5:
+			$AnimatedSprite2D.play("northeast-walk")
+		if direction.x > 0.5 and direction.y > 0.5:
+			$AnimatedSprite2D.play("southeast-walk")
+		if direction.x < -0.5 and direction.y > 0.5:
+			$AnimatedSprite2D.play("southwest-walk")
+		if direction.x < -0.5 and direction.y < -0.5:
+			$AnimatedSprite2D.play("northwest-walk")
+	
+func player():
+	pass
+	
 func cameraController():
-	# camera fixed to player character.
-	pass 
-	
-	
-func handleInput():
-	var moveDirection = Input.get_vector("move_left","move_right", "move_up", "move_down")
-	velocity = moveDirection * SPEED
-	
-	
-func updateAnimation():
-	if velocity.length() == 0:
-		if animations.is_playing():
-			animations.stop()
-	else:
-		var direction = "Down"
-		if  velocity. x < 0:
-			direction = "Left"
-		elif velocity.x > 0:
-			direction = "Right"
-		elif velocity.y < 0: 
-			direction = "Up"
-	
-		animations.play("walk" + direction)
-
-
-func health():
-	# set healt
-	# attack reduces  health -= 2
-	pass
-	
-
-func sanity():
-	var sanityCount = 100
-	# sanity declines by a number when outside safezones aka campfire spots and
-	# if not near safezone sanity ticks down per second. 
 	pass
 
-func interactions():
+func interact():
 	# apply interact object
 	# restrict only to object you can interact with
 	# interaction list.
@@ -53,7 +65,13 @@ func attack():
 	if Input.is_action_pressed("attack_button"):
 		animations.play("attack") 
 
-func _physics_process(delta):
-	handleInput()
-	move_and_slide()
-	updateAnimation()
+func upgrades():
+	#Set the upgrades and checks the upgrade objects that are active.
+	# and add functionality to character
+	pass
+	
+func _ready():
+	pass
+	
+func _physics_process(_delta):
+	player_movement()

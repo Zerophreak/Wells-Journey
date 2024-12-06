@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb0ukrkxlo4bu"]
+
+[ext_resource type="PackedScene" uid="uid://ctn5td75bxpvr" path="res://Assets/Objects/Scenes/the_well.tscn" id="1_v5f4o"]
+[ext_resource type="PackedScene" uid="uid://bm2blwl1b1dm4" path="res://World/Chapter 0/Assets/Home/Home_exterior.tscn" id="2_nporj"]
+[ext_resource type="PackedScene" uid="uid://dpn0ny88jol5p" path="res://World/Chapter 0/Assets/Garden/Tent_exterior.tscn" id="3_v47vx"]
+
+[sub_resource type="TileSet" id="TileSet_0mfho"]
+tile_size = Vector2i(32, 32)
+
+[node name="Garden" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_0mfho")
+rendering_quadrant_size = 32
+
+[node name="TheWell" parent="." instance=ExtResource("1_v5f4o")]
+position = Vector2(885, 461)
+
+[node name="Home_Exterior" parent="." instance=ExtResource("2_nporj")]
+position = Vector2(-23, 90)
+
+[node name="TentExterior" parent="." instance=ExtResource("3_v47vx")]
+position = Vector2(1031, 126)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(584, 312)

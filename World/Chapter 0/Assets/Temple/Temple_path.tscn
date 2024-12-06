@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cj7xvdppde00x"]
+
+[node name="TemplePath" type="Node2D"]
+
+[node name="Stone" type="TileMapLayer" parent="."]
+
+[node name="Grass" type="TileMapLayer" parent="."]

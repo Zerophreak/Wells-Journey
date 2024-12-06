@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnb4bkhhe00xf"]
+
+[ext_resource type="Script" path="res://Assets/Player/Script/player.gd" id="1_1u0sc"]
+[ext_resource type="Texture2D" uid="uid://dm36t6mmi7b0q" path="res://icon.svg" id="2_fhr6b"]
+[ext_resource type="Script" path="res://Assets/Player/Script/health_component.gd" id="3_42uod"]
+[ext_resource type="Script" path="res://Assets/Player/Script/sanity_component.gd" id="4_q7het"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjc55"]
+radius = 67.42
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kmw2i"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_1u0sc")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(436, 230)
+scale = Vector2(0.828125, 0.859375)
+texture = ExtResource("2_fhr6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(433, 235)
+shape = SubResource("CircleShape2D_gjc55")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kmw2i")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_42uod")
+
+[node name="SanityComponent" type="Node" parent="."]
+script = ExtResource("4_q7het")

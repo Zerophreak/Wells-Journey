@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctfomprc7422d"]
+
+[sub_resource type="TileSet" id="TileSet_l4t07"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_1japs"]
+
+[node name="HomeInterior" type="Node2D"]
+position = Vector2(-5, 5)
+
+[node name="Flooring" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_l4t07")
+
+[node name="LightNode" type="Node" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="LightNode"]
+position = Vector2(-5, 5)
+color = Color(1, 1, 0.396078, 1)
+texture = SubResource("ImageTexture_1japs")
+
+[node name="DirectionalLight1" type="DirectionalLight2D" parent="LightNode"]
+position = Vector2(484, 207)

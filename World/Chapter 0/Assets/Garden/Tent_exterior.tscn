@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpn0ny88jol5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m320u"]
+size = Vector2(176, 189)
+
+[node name="TentExterior" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(957, 208)
+shape = SubResource("RectangleShape2D_m320u")
+
+[node name="TentSprite" type="Sprite2D" parent="."]

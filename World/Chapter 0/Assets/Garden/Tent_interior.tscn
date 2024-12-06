@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cc845ixi0k6kc"]
+
+[node name="Floor" type="TileMapLayer"]
+
+[node name="Furniture" type="TileMapLayer" parent="."]
+
+[node name="Background" type="TileMapLayer" parent="."]

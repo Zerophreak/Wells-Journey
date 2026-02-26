@@ -3,7 +3,7 @@ using System;
 
 public partial class Main : Control
 {
-	public override void _UnhandledInput(InputEvent, @event)
+	public override void _UnhandledInput(InputEvent @event)
 	{
 		if(@event.IsActionPressed("quit"))
 		{

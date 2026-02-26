@@ -14,6 +14,10 @@ config/name="Wells Journey"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://v8hxmcifhdpg"
+
 [dotnet]
 
 project/assembly_name="Wells Journey"
